@@ -1,4 +1,5 @@
 package Keybinder;
+our $VERSION = '0.01';
 
 use 5.010001;
 use strict;
@@ -9,25 +10,10 @@ require Exporter;
 
 our @ISA = qw(Exporter);
 
-# Items to export into callers namespace by default. Note: do not export
-# names by default without a very good reason. Use EXPORT_OK instead.
-# Do not simply export all your public functions/methods/constants.
-
-# This allows declaration	use Keybinder ':all';
-# If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
-# will save memory.
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	kb_test
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our $VERSION = '0.01';
+our @EXPORT = qw/bind_key unbind_key/;
 
 require XSLoader;
 XSLoader::load('Keybinder', $VERSION);
-
-# Preloaded methods go here.
 
 1;
 __END__
