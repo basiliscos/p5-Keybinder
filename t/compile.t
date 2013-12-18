@@ -1,13 +1,15 @@
 use strict;
 use warnings;
 
-use Test::More tests => 1;
-BEGIN { use_ok('Keybinder') };
+use Test::More;
 
-use Keybinder;
+use_ok('Keybinder');
 
 my $cb = sub { };
 my $key = "<Ctrl>A";
 
-bind_key($key, $cb);
+#ok !bind_key("<Ctrlll>A", sub{}), "Wrong key hasn't been binded";
+ok bind_key($key, $cb), "$key binded successfully to coderef";
 unbind_key($key, $cb);
+
+done_testing;

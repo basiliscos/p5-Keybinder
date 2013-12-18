@@ -18,6 +18,14 @@ $button->signal_connect (clicked => $exit);
 $window->add ($button);
 $window->show_all;
 
+sub d{
+ print "d!\n";
+}
+
 bind_key($key => $exit) or die("can't bind $key");
+bind_key('<Ctrl>B' => $exit) or die("can't bind...");
+bind_key('<Ctrl>C' => sub { "Ctrl+C has been pressed"}) or die("can't bind...");
+bind_key('<Ctrl>D' => \&d) or die("can't bind...");
+
 
 Gtk2->main;
