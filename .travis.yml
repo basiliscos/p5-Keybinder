@@ -4,6 +4,7 @@ before_install:
  - sudo apt-get install -qq libkeybinder-dev libkeybinder0
  - pkg-config --modversion glib-2.0
  - cpanm -v --notest ExtUtils::Depends ExtUtils::PkgConfig
+ - cpanm -v --notest XAOC/Glib-1.302
 
 install: cpanm -v --installdeps --notest .
 
