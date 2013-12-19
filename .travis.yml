@@ -3,7 +3,7 @@ language: perl
 #before_install:
 # - sudo apt-get install -qq libkeybinder-dev libkeybinder0
 
-install: cpanm --installdeps --notest .
+install: cpanm -v --installdeps --notest .
 
 
 perl:
