@@ -1,7 +1,11 @@
 language: perl
+
+#before_install:
+# - sudo apt-get install -qq libkeybinder-dev libkeybinder0
+
 install: cpanm --installdeps --notest .
-before_install:
- - sudo apt-get install -qq libkeybinder-dev libkeybinder0
+
+
 perl:
   - "5.18"
   - "5.16"
