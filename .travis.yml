@@ -2,9 +2,9 @@ language: perl
 
 before_install:
  - sudo apt-get install -qq libkeybinder-dev libkeybinder0
- - cpanm -v --installdeps --notest ExtUtils::Depends ExtUtils::PkgConfig
+# - cpanm -v --installdeps --notest ExtUtils::Depends ExtUtils::PkgConfig
 
-install: cpanm -v --installdeps --notest .
+install: cpanm -v --installdeps --notest ExtUtils::Depends ExtUtils::PkgConfig .
 
 
 perl:
