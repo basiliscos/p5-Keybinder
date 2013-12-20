@@ -3,7 +3,7 @@ use ExtUtils::MakeMaker;
 
 # minimum required version of dependencies we need to build
 our %build_reqs = (
-    'keybinder' => '0.3.0',
+    'keybinder' => '0.2.0',
 );
 our %PREREQ_PM = (
     'ExtUtils::Depends'   => '0.300',
