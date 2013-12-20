@@ -4,7 +4,6 @@ our $VERSION = '0.01';
 use 5.010001;
 use strict;
 use warnings;
-use Gtk2 -init;
 
 require Exporter;
 
@@ -13,6 +12,8 @@ our @ISA = qw(Exporter);
 our @EXPORT = qw/bind_key unbind_key/;
 
 require XSLoader;
+require Gtk2;
+
 XSLoader::load('Keybinder', $VERSION);
 
 1;

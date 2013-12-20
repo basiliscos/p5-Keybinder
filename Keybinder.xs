@@ -6,10 +6,10 @@
 
 static HV * cb_mapping = (HV*)NULL;
 
-void kb_test(){
-  printf("Hello KB\n");
+void _initialize() {
+  keybinder_init();
+  cb_mapping = newHV();
 }
-
 
 void callback_bridge(const char *keystring, void *user_data){
   dSP;
@@ -29,6 +29,8 @@ gboolean bind_key(const char *keystring, SV* cb){
   {
     croak("Second argument for bind_key should be a closure...\n");
   }
+  if(!cb_mapping) _initialize();
+
   SV* cb_copy = newSVsv(cb);
   gboolean success = keybinder_bind(keystring, callback_bridge, (void*) cb_copy);
   if ( success ) {
@@ -43,21 +45,14 @@ gboolean bind_key(const char *keystring, SV* cb){
 
 
 void unbind_key(const char *keystring, SV* cb){
-  SV** cb_copy = hv_delete(cb_mapping, (char*)cb, sizeof(void*), 0);
+  if(!cb_mapping) _initialize();
+  SV** cb_copy = (SV**)hv_delete(cb_mapping, (char*)cb, sizeof(void*), 0);
   if ( cb_copy ) {
     keybinder_unbind(keystring, callback_bridge);
   }
 }
 
-
 MODULE = Keybinder		PACKAGE = Keybinder		
-
-BOOT:
-  keybinder_init();
-  cb_mapping = newHV();
-
-void
-kb_test()
 
 gboolean
 bind_key(keystring, cb)
