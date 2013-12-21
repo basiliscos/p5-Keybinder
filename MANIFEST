@@ -3,6 +3,7 @@ Keybinder.xs
 Makefile.PL
 MANIFEST
 README
+typemap
 eg/sample.pl
 t/Keybinder.t
 t/bind.t
