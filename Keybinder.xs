@@ -13,10 +13,9 @@ void _initialize() {
 
 void callback_bridge(const char *keystring, void *user_data){
   dSP;
-  SV** cb = hv_fetch(cb_mapping, (char*)user_data, sizeof(void*), 0);
+  SV** cb = hv_fetch(cb_mapping, keystring, strlen(keystring), 0);
   if (cb == (SV**)NULL)
     croak("Internal error: no callback can't be found\n");
-  printf("callback_bridge for %s\n", keystring);
   PUSHMARK(SP);
   call_sv(*cb, G_NOARGS|G_DISCARD|G_VOID);
 }
@@ -34,7 +33,7 @@ gboolean bind_key(const char *keystring, SV* cb){
   SV* cb_copy = newSVsv(cb);
   gboolean success = keybinder_bind(keystring, callback_bridge, (void*) cb_copy);
   if ( success ) {
-    hv_store(cb_mapping, (char*)cb_copy, sizeof(void*), cb_copy, 0);
+    hv_store(cb_mapping, keystring, strlen(keystring), cb_copy, 0);
   }
   else {
     SvREFCNT_dec(cb_copy);
@@ -44,9 +43,9 @@ gboolean bind_key(const char *keystring, SV* cb){
 }
 
 
-void unbind_key(const char *keystring, SV* cb){
+void unbind_key(const char *keystring){
   if(!cb_mapping) _initialize();
-  SV** cb_copy = (SV**)hv_delete(cb_mapping, (char*)cb, sizeof(void*), 0);
+  SV** cb_copy = (SV**)hv_delete(cb_mapping, keystring, strlen(keystring), 0);
   if ( cb_copy ) {
     keybinder_unbind(keystring, callback_bridge);
   }
@@ -61,10 +60,9 @@ bind_key(keystring, cb)
   PROTOTYPE: $$
 
 void
-unbind_key(keystring, cb)
+unbind_key(keystring)
   const char *keystring
-  SV* cb
-  PROTOTYPE: $$
+  PROTOTYPE: $
 
 
 

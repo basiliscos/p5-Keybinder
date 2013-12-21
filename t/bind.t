@@ -11,7 +11,7 @@ my $cb = sub { };
 my $key = "<Ctrl>A";
 
 ok bind_key($key, $cb), "$key binded successfully to coderef";
-unbind_key($key, $cb);
+unbind_key($key);
 ok bind_key($key, $cb), "$key binded successfully to coderef";
 
 done_testing;
