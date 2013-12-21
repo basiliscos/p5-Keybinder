@@ -18,49 +18,53 @@ XSLoader::load('Keybinder', $VERSION);
 
 1;
 __END__
-# Below is stub documentation for your module. You'd better edit it!
 
 =head1 NAME
 
-Keybinder - Perl extension for blah blah blah
+Keybinder - Perl extension that wraps libkeybinder for GTK apps
 
 =head1 SYNOPSIS
 
   use Keybinder;
-  blah blah blah
+
+  bind_key('<Ctrl>B' => sub{ ... });
+  bind_key('<Shift>F1' => sub{ ... });
+  bind_key('<Ctrl><Alt>V' => sub{ ... });
+  unbind_key('<Ctrl>B');
+
 
 =head1 DESCRIPTION
 
-Stub documentation for Keybinder, created by h2xs. It looks like the
-author of the extension was negligent enough to leave the stub
-unedited.
+Gtk2 toolkit is great, but it does not provides "global" hotkeys availability, i.e.
+catching some accelerator press event while current window is not active. B<libkeybinder>
+has been developed to fill that gap.
 
-Blah blah blah.
+
+The current bindings aren't complete, but enough for my purposes.
+
+
+The accelerator representatic string should be accepted by B<gtk_accelerator_parse>. Here
+is an extraction:
+
+  The format looks like "<Control>a" or "<Shift><Alt>F1" or "<Release>z"
+  (the last one is for key release). The parser is fairly liberal and allows
+  lower or upper case, and also abbreviations such as "<Ctl>" and "<Ctrl>".
 
 =head2 EXPORT
 
-None by default.
-
-
+bind_key, unbind_key
 
 =head1 SEE ALSO
 
-Mention other useful documentation such as the documentation of
-related modules or operating system documentation (such as man pages
-in UNIX), or any relevant external documentation such as RFCs or
-standards.
-
-If you have a mailing list set up for your module, mention it here.
-
-If you have a web site set up for your module, mention it here.
+L<https://github.com/engla/keybinder>, L<https://developer.gnome.org/gtk3/>
 
 =head1 AUTHOR
 
-A. U. Thor, E<lt>dmol@(none)E<gt>
+Ivan Baidakou (a.k.a. basiliscos)  E<lt>dmol@(cpan.org)E<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2013 by A. U. Thor
+Copyright (C) 2013 by Ivan Baidakou
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.16.3 or,
