@@ -17,7 +17,6 @@ unless (eval "use ExtUtils::Depends '$PREREQ_PM{'ExtUtils::Depends'}';"
            . "1") {
    warn "$@\n";
    WriteMakefile(
-         NAME         => 'Glib',
          PREREQ_FATAL => 1,
          PREREQ_PM    => \%PREREQ_PM,
    );
