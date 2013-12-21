@@ -1,5 +1,8 @@
 Revision history for Perl extension Keybinder.
 
+0.01  Sun Dec 15 21:17:36 2013
+	- fix building
+
 0.01  Sun Dec 15 19:13:36 2013
 	- original version; created by h2xs 1.23 with options
 		-b 5.10.1 -A -n Keybinder --use-xsloader --skip-ppport
