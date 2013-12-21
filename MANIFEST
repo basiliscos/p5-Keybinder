@@ -3,5 +3,8 @@ Keybinder.xs
 Makefile.PL
 MANIFEST
 README
+eg/sample.pl
 t/Keybinder.t
+t/bind.t
+t/compile.t
 lib/Keybinder.pm
