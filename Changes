@@ -1,6 +1,10 @@
 Revision history for Perl extension Keybinder.
 
-0.01  Sun Dec 15 21:17:36 2013
+0.03  Sun Dec 29 23:13:36 2013
+        - Add metadata to Makefile.PL
+
+
+0.02  Sun Dec 15 21:17:36 2013
 	- fix building
 
 0.01  Sun Dec 15 19:13:36 2013

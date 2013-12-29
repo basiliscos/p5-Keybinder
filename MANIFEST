@@ -1,11 +1,13 @@
+.travis.yml
 Changes
+eg/sample.pl
+Keybinder-0.03.tar.gz
 Keybinder.xs
+lib/Keybinder.pm
 Makefile.PL
 MANIFEST
 README
-typemap
-eg/sample.pl
-t/Keybinder.t
+README.md
 t/bind.t
 t/compile.t
-lib/Keybinder.pm
+typemap
