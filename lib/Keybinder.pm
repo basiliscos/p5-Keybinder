@@ -1,5 +1,5 @@
 package Keybinder;
-our $VERSION = '0.03';
+our $VERSION = '0.03_1';
 
 use 5.010001;
 use strict;
